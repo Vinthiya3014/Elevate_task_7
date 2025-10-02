@@ -1,3 +1,4 @@
+-- create view
 CREATE VIEW StudentHostelPaymentView AS
 SELECT 
     s.student_id, 
@@ -11,3 +12,9 @@ JOIN allocation a ON s.student_id = a.student_id
 JOIN room r ON a.room_id = r.room_id
 JOIN hostel h ON r.hostel_id = h.hostel_id
 LEFT JOIN payment p ON s.student_id = p.student_id;
+--abstract
+SELECT * FROM StudentHostelPaymentView;
+--security
+CREATE VIEW PublicStudentView AS
+SELECT StudentID, StudentName, HostelID
+FROM student;
